@@ -44,19 +44,27 @@ body {
 }
 
 /* Language Toggle */
-.lang-toggle {
+/* Language Toggle - Desktop (Default) */
+.lang-toggle-inline {
     position: fixed;
+    /* Fixed to viewport, not parent */
     top: 20px;
     right: 20px;
-    z-index: 100;
-    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    /* Very high to ensure it's on top */
+    background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(5px);
     padding: 5px;
-    border-radius: 30px;
+    border-radius: 20px;
     border: 1px solid var(--glass-border);
+    display: flex !important;
+    /* Force display */
+    gap: 5px;
+    pointer-events: auto;
+    /* Override parent pointer-events:none */
 }
 
-.lang-btn {
+.lang-toggle-inline .lang-btn {
     background: transparent;
     border: none;
     color: #888;
@@ -65,9 +73,11 @@ body {
     font-weight: 600;
     transition: 0.3s;
     border-radius: 20px;
+    pointer-events: auto;
+    /* Ensure clickable */
 }
 
-.lang-btn.active {
+.lang-toggle-inline .lang-btn.active {
     background: var(--text-light);
     color: #000;
 }
@@ -403,9 +413,14 @@ body {
 }
 
 .history-item.active .history-details {
-    max-height: 500px;
+    max-height: 80vh;
+    /* Use viewport height for flexibility */
     margin-top: 15px;
     padding: 15px;
+    overflow-y: auto;
+    /* Enable scroll for long content */
+    -webkit-overflow-scrolling: touch;
+    /* Smooth scrolling on iOS */
 }
 
 .match-row {
@@ -723,7 +738,10 @@ body {
         height: auto;
         transform: none;
         left: 0;
-        padding: 10px;
+        padding: 10px 10px 10px 10px;
+        /* Default padding */
+        padding-right: 90px;
+        /* Make space for lang toggle */
         background: rgba(0, 0, 0, 0.85);
         z-index: 100;
         backdrop-filter: blur(10px);
@@ -736,6 +754,9 @@ body {
         gap: 10px;
         border-bottom: 1px solid var(--glass-border);
     }
+
+    /* Event branding responsive alignment handled below */
+
 
     .event-branding {
         margin-bottom: 0;
@@ -814,5 +835,206 @@ body {
     .action-buttons {
         flex-direction: column;
         gap: 10px;
+    }
+
+    /* Fix History Table Responsive - Card Layout for Mobile */
+    /* Keep collapsed by default, only expand when active */
+    .history-item.active .history-details {
+        padding: 10px 0;
+        overflow-x: hidden;
+        max-height: 80vh;
+        /* Match desktop but with larger value for mobile cards */
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Responsive Header Alignment */
+    .center-overlay {
+        flex-direction: column;
+        /* Stack items vertically on mobile */
+        padding: 15px;
+        gap: 15px;
+        height: auto;
+    }
+
+    .event-branding {
+        text-align: center;
+        /* Center text */
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .event-branding h1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    /* Inline Language Toggle - Mobile Override */
+    .lang-toggle-inline {
+        position: fixed;
+        /* Keep fixed but reposition for mobile */
+        top: auto;
+        bottom: 80px;
+        /* Above news drawer */
+        left: 50%;
+        transform: translateX(-50%);
+        right: auto;
+        gap: 5px;
+        background: rgba(0, 0, 0, 0.8);
+        border: 1px solid var(--europe-gold);
+        padding: 8px;
+        border-radius: 25px;
+        z-index: 9999;
+    }
+
+    .lang-toggle-inline .lang-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #ddd;
+        border-radius: 20px;
+        cursor: pointer;
+        pointer-events: auto;
+    }
+
+    .lang-toggle-inline .lang-btn.active {
+        background: var(--europe-gold);
+        color: #000;
+        border-color: var(--europe-gold);
+        font-weight: bold;
+    }
+
+    /* Collapse News Drawer on Mobile */
+    .news-drawer {
+        transform: translateY(100%);
+        bottom: 0;
+    }
+
+    .news-drawer.active {
+        transform: translateY(0);
+    }
+
+    .news-toggle {
+        top: -40px;
+        width: auto;
+        padding: 8px 15px;
+        border-radius: 10px 10px 0 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .matches-table thead {
+        display: none;
+        /* Hide table headers on mobile */
+    }
+
+    .matches-table,
+    .matches-table tbody,
+    .matches-table tr,
+    .matches-table td {
+        display: block;
+        width: 100%;
+        min-width: 0;
+        /* Reset min-width */
+    }
+
+    .matches-table tr {
+        margin-bottom: 15px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        padding: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .matches-table td {
+        padding: 5px 10px;
+        text-align: left;
+        border-bottom: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #ddd;
+        /* Ensure text is visible */
+    }
+
+    /* Add labels for mobile */
+    .matches-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #aaa;
+        font-size: 0.8rem;
+        margin-right: 10px;
+        min-width: 80px;
+        /* Align labels */
+    }
+
+    .match-type {
+        font-size: 0.9rem;
+        color: var(--europe-gold) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        margin-bottom: 5px;
+        padding-bottom: 8px !important;
+        justify-content: center;
+    }
+
+    .match-type::before {
+        display: none;
+    }
+
+    .team-eur,
+    .team-usa {
+        font-size: 0.95rem;
+    }
+
+    .match-result {
+        justify-content: center;
+        font-size: 1.2rem;
+        margin-top: 5px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+        padding: 5px !important;
+        font-weight: bold;
+        color: #fff !important;
+    }
+
+    .match-result::before {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .history-summary {
+        grid-template-columns: 1fr;
+        /* Single column for summary on mobile */
+        gap: 5px;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .year {
+        font-size: 1.8rem;
+        margin-bottom: 5px;
+    }
+
+    .winner {
+        font-size: 1.2rem;
+        color: #fff;
+    }
+
+    .score {
+        font-size: 1.5rem;
+        margin: 5px 0;
+    }
+
+    .venue {
+        font-size: 0.8rem;
+        opacity: 0.6;
     }
 }

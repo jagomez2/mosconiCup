@@ -620,10 +620,10 @@ function renderHistory() {
                         <tbody>
                             ${item.matches.map(m => `
                                 <tr class="${m.winner === 'EUR' ? 'eur-win' : m.winner === 'USA' ? 'usa-win' : ''}">
-                                    <td class="match-type">${m.type}</td>
-                                    <td class="team-eur">${m.teamEUR}</td>
-                                    <td class="team-usa">${m.teamUSA}</td>
-                                    <td class="match-result">${m.result}</td>
+                                    <td class="match-type" data-label="Type">${m.type}</td>
+                                    <td class="team-eur" data-label="Team Europe">${m.teamEUR}</td>
+                                    <td class="team-usa" data-label="Team USA">${m.teamUSA}</td>
+                                    <td class="match-result" data-label="Result">${m.result}</td>
                                 </tr>
                             `).join('')}
                         </tbody>
