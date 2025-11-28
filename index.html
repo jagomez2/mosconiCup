@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mosconi Cup 2025 - Countdown & Teams</title>
+    <meta name="description"
+        content="Official countdown and team rosters for the Mosconi Cup 2025 at Alexandra Palace, London. Team Europe vs Team USA.">
+    <meta name="keywords" content="Mosconi Cup, Pool, Billiards, Team Europe, Team USA, 2025, London, Alexandra Palace">
+    <meta name="author" content="Matchroom Pool">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mosconicup2025.com/">
+    <meta property="og:title" content="Mosconi Cup 2025 - Countdown & Teams">
+    <meta property="og:description"
+        content="Official countdown and team rosters for the Mosconi Cup 2025 at Alexandra Palace, London. Team Europe vs Team USA.">
+    <meta property="og:image" content="https://mosconicup2025.com/assets/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mosconicup2025.com/">
+    <meta property="twitter:title" content="Mosconi Cup 2025 - Countdown & Teams">
+    <meta property="twitter:description"
+        content="Official countdown and team rosters for the Mosconi Cup 2025 at Alexandra Palace, London. Team Europe vs Team USA.">
+    <meta property="twitter:image" content="https://mosconicup2025.com/assets/og-image.jpg">
+
+    <link rel="canonical" href="https://mosconicup2025.com/">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Russo+One&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Language Toggle -->
+    <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="es">ES</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+
+    <div class="split-container">
+        <!-- Team Europe Side (Left) -->
+        <section class="split-side side-europe">
+            <div class="flag-bg europe-bg"></div>
+            <div class="content-wrapper">
+                <header class="team-header">
+                    <h2 data-i18n="team_europe">TEAM EUROPE</h2>
+                    <div class="stars-icon">★★★★★</div>
+                </header>
+
+                <div class="players-grid" id="europe-players">
+                    <!-- Players injected via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Team USA Side (Right) -->
+        <section class="split-side side-usa">
+            <div class="flag-bg usa-bg"></div>
+            <div class="content-wrapper">
+                <header class="team-header">
+                    <h2 data-i18n="team_usa">TEAM USA</h2>
+                    <div class="stars-icon">★★★★★</div>
+                </header>
+
+                <div class="players-grid" id="usa-players">
+                    <!-- Players injected via JS -->
+                </div>
+            </div>
+        </section>
+        <!-- Central Overlay Elements -->
+        <div class="center-overlay">
+            <div class="event-branding">
+                <h1>MOSCONI CUP <span class="year">2025</span></h1>
+                <p class="location">ALEXANDRA PALACE, LONDON</p>
+            </div>
+
+            <div class="countdown-container glass-panel">
+                <div class="timer-grid" id="countdown">
+                    <div class="time-unit">
+                        <span id="days">00</span>
+                        <label data-i18n="days">DÍAS</label>
+                    </div>
+                    <div class="separator">:</div>
+                    <div class="time-unit">
+                        <span id="hours">00</span>
+                        <label data-i18n="hours">HRS</label>
+                    </div>
+                    <div class="separator">:</div>
+                    <div class="time-unit">
+                        <span id="minutes">00</span>
+                        <label data-i18n="minutes">MIN</label>
+                    </div>
+                    <div class="separator">:</div>
+                    <div class="time-unit">
+                        <span id="seconds">00</span>
+                        <label data-i18n="seconds">SEG</label>
+                    </div>
+                </div>
+                <div class="event-date">DEC 3 - 6, 2025</div>
+
+                <div class="action-buttons">
+                    <button class="glass-btn" id="view-history" data-i18n="view_history">VER HISTORIAL</button>
+                    <button class="glass-btn" id="view-odds" data-i18n="view_odds">VER APUESTAS</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- News Section (Bottom Drawer) -->
+    <div class="news-drawer" id="news-drawer">
+        <button class="news-toggle" id="news-toggle">
+            <span data-i18n="latest_news">ÚLTIMAS NOTICIAS</span>
+            <span class="news-toggle-icon">▼</span>
+        </button>
+        <div class="news-content-wrapper">
+            <div class="news-header">
+                <h3 data-i18n="latest_news">ÚLTIMAS NOTICIAS</h3>
+                <div class="news-controls">
+                    <button id="prev-news">←</button>
+                    <button id="next-news">→</button>
+                </div>
+            </div>
+            <div class="news-content" id="news-ticker">
+                <!-- News injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Historical Results Modal -->
+    <div id="history-modal" class="modal">
+        <div class="modal-content glass-panel">
+            <span class="close-modal" id="close-history">&times;</span>
+            <h3 data-i18n="history_title">HISTORIAL RECIENTE</h3>
+            <div class="history-list" id="history-list">
+                <!-- History injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Betting Odds Modal -->
+    <div id="betting-modal" class="modal">
+        <div class="modal-content glass-panel">
+            <span class="close-modal" id="close-betting">&times;</span>
+            <h3 data-i18n="betting_title">CUOTAS DE APUESTAS</h3>
+            <div class="betting-table-container">
+                <table class="betting-table">
+                    <thead>
+                        <tr>
+                            <th data-i18n="bookmaker">CASA</th>
+                            <th data-i18n="team_europe">EUROPA</th>
+                            <th data-i18n="team_usa">USA</th>
+                        </tr>
+                    </thead>
+                    <tbody id="betting-list">
+                        <!-- Odds injected via JS -->
+                    </tbody>
+                </table>
+                <p class="betting-disclaimer" data-i18n="betting_disclaimer">* Cuotas sujetas a cambios. Juega con
+                    responsabilidad.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
