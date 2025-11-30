@@ -578,8 +578,11 @@ function renderPlayers(players, containerId, teamColor) {
     container.innerHTML = players.map(player => `
         <div class="player-card">
             <img src="${player.image}" 
-                 alt="${player.name}" 
+                 alt="${player.name} - ${translations[currentLang][player.role === 'captain' ? 'captain' : 'player']}" 
                  class="player-img"
+                 loading="lazy"
+                 width="200"
+                 height="200"
                  onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(player.name)}&background=${teamColor}&color=fff&size=200&font-size=0.33'">
             <div class="player-info">
                 <h3>

@@ -1,0 +1,17 @@
+# robots.txt for Mosconi Cup 2025
+
+# Allow all bots to access the site
+User-agent: *
+Allow: /
+
+# Disallow access to private directories
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.env
+Disallow: /data/
+
+# Sitemap location
+Sitemap: https://mosconicup2025.com/sitemap.xml
+
+# Crawl-delay (optional, helps prevent server overload)
+Crawl-delay: 1

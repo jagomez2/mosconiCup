@@ -2,29 +2,29 @@
   {
     "bookmaker": "Bet365",
     "odds": {
-      "europe": "1.83",
-      "usa": "1.98"
+      "europe": "1.78",
+      "usa": "2.04"
     }
   },
   {
     "bookmaker": "William Hill",
     "odds": {
-      "europe": "1.85",
-      "usa": "1.97"
+      "europe": "1.87",
+      "usa": "1.94"
     }
   },
   {
     "bookmaker": "Sky Bet",
     "odds": {
-      "europe": "1.71",
-      "usa": "2.14"
+      "europe": "1.78",
+      "usa": "2.13"
     }
   },
   {
     "bookmaker": "Betfair",
     "odds": {
       "europe": "1.85",
-      "usa": "1.93"
+      "usa": "1.91"
     }
   }
 ]
